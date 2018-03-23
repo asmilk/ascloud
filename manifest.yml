@@ -1,0 +1,11 @@
+applications:
+- path: target/ascloud.war
+  memory: 512M
+  instances: 1
+  domain: mybluemix.net
+  name: ascloud
+  host: ascloud
+  disk_quota: 1024M
+  services: 
+  - dataSource
+  buildpack: java_buildpack
