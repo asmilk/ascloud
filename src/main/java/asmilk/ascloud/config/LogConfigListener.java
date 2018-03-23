@@ -23,9 +23,5 @@ public class LogConfigListener implements ServletContextListener {
 		SLF4JBridgeHandler.uninstall();
 		LOG.info("Uninstalled root logger handler.");
 	}
-	
-	
-
-	
 
 }

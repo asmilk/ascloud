@@ -3,9 +3,10 @@ package asmilk.ascloud.config;
 import javax.sql.DataSource;
 
 import org.springframework.cloud.config.java.AbstractCloudConfig;
+import org.springframework.cloud.config.java.ServiceScan;
 import org.springframework.context.annotation.Bean;
 
-//@ServiceScan
+@ServiceScan
 public class CloudConfig extends AbstractCloudConfig {
 
 	@Bean
