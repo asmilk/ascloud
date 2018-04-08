@@ -1,10 +1,7 @@
 package asmilk.ascloud.web.ctrl;
 
-import javax.sql.DataSource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,13 +10,13 @@ public class IndexController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
 
-	@Autowired
-	DataSource dataSource;
+	// @Autowired
+	// DataSource dataSource;
 
 	@GetMapping({ "/", "/index" })
 	public String index() {
 		LOG.info("===start===");
-		LOG.info("dataSource: {}", dataSource);
+		// LOG.info("dataSource: {}", dataSource);
 		return "index";
 	}
 
