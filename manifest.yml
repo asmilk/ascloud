@@ -7,5 +7,5 @@ applications:
   host: ascloud
   disk_quota: 1024M
   services: 
-  - dataSource
+  - ElephantSQL-Tiny_Turtle
   buildpack: java_buildpack
