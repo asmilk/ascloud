@@ -3,7 +3,10 @@ package asmilk.ascloud.config;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.CacheControl;
@@ -18,13 +21,19 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 @EnableWebMvc
 @ComponentScan("asmilk.ascloud.web")
 public class ServletConfig implements WebMvcConfigurer {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ServletConfig.class);
 
 	@Autowired
 	private RequestMappingHandlerAdapter requestMappingHandlerAdapter;
+	
+	@Autowired
+	private DataSource dataSource;
 
 	@PostConstruct
 	public void postConstruct() {
 		this.requestMappingHandlerAdapter.setIgnoreDefaultModelOnRedirect(true);
+		LOG.info("dataSource:{}", this.dataSource);
 	}
 
 	@Override
