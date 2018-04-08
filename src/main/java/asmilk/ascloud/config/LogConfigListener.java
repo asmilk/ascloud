@@ -1,10 +1,5 @@
 package asmilk.ascloud.config;
 
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.Set;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -23,19 +18,19 @@ public class LogConfigListener implements ServletContextListener {
 		SLF4JBridgeHandler.install();
 		LOG.info("Installed root logger handler.");
 
-		LOG.info("=====System Properties=====");
-		Properties properties = System.getProperties();
-		Set<Entry<Object, Object>> propSet = properties.entrySet();
-		for (Entry<Object, Object> entry : propSet) {
-			LOG.info("{}:{}", entry.getKey(), entry.getValue());
-		}
-
-		LOG.info("=====System Env=====");
-		Map<String, String> map = System.getenv();
-		Set<Entry<String, String>> mapSet = map.entrySet();
-		for (Entry<String, String> entry : mapSet) {
-			LOG.info("{}:{}", entry.getKey(), entry.getValue());
-		}
+		// LOG.info("=====System Properties=====");
+		// Properties properties = System.getProperties();
+		// Set<Entry<Object, Object>> propSet = properties.entrySet();
+		// for (Entry<Object, Object> entry : propSet) {
+		// LOG.info("{}:{}", entry.getKey(), entry.getValue());
+		// }
+		//
+		// LOG.info("=====System Env=====");
+		// Map<String, String> map = System.getenv();
+		// Set<Entry<String, String>> mapSet = map.entrySet();
+		// for (Entry<String, String> entry : mapSet) {
+		// LOG.info("{}:{}", entry.getKey(), entry.getValue());
+		// }
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

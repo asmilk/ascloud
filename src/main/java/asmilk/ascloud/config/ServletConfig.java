@@ -3,7 +3,6 @@ package asmilk.ascloud.config;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,14 +25,10 @@ public class ServletConfig implements WebMvcConfigurer {
 
 	@Autowired
 	private RequestMappingHandlerAdapter requestMappingHandlerAdapter;
-	
-	@Autowired
-	private DataSource dataSource;
 
 	@PostConstruct
 	public void postConstruct() {
 		this.requestMappingHandlerAdapter.setIgnoreDefaultModelOnRedirect(true);
-		LOG.info("dataSource:{}", this.dataSource);
 	}
 
 	@Override
