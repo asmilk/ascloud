@@ -86,16 +86,6 @@
 			<version>${version.db2jcc4}</version>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- <dependency>
-			<groupId>com.ibm.db2</groupId>
-			<artifactId>db2jcc</artifactId>
-			<version>8.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.ibm.db2</groupId>
-			<artifactId>db2jcc_license_cu</artifactId>
-			<version>9.7</version>
-		</dependency> -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -125,11 +115,11 @@
 			<artifactId>spring-cloud-spring-service-connector</artifactId>
 			<version>${version.spring.cloud}</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-cloudfoundry-connector</artifactId>
 			<version>${version.spring.cloud}</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
