@@ -22,7 +22,6 @@ public class JpaConfig {
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-//		jpaVendorAdapter.setDatabase(Database.DERBY);
 		jpaVendorAdapter.setGenerateDdl(true);
 		jpaVendorAdapter.setShowSql(true);
 		return jpaVendorAdapter;
@@ -38,7 +37,6 @@ public class JpaConfig {
 		entityManagerFactory.setPackagesToScan("asmilk.ascloud.domain");
 
 		Properties jpaProperties = new Properties();
-//		jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.DerbyTenSevenDialect");
 		jpaProperties.put("hibernate.hbm2ddl.auto", "create");
 		jpaProperties.put("hibernate.format_sql", true);
 		jpaProperties.put("hibernate.generate_statistics", true);

@@ -20,8 +20,8 @@
 		<version.slf4j>1.7.25</version.slf4j>
 		<version.log4j>2.9.1</version.log4j>
 		
-		<version.postgresql>9.3-1104-jdbc41</version.postgresql>
-		<version.derby>10.11.1.1</version.derby>
+		<version.postgresql>9.4.1212</version.postgresql>
+		<version.derby>10.14.1.0</version.derby>
 
 		<version.spring.core>5.0.5.RELEASE</version.spring.core>
 		<version.spring.cloud>2.0.1.RELEASE</version.spring.cloud>
