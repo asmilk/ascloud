@@ -7,5 +7,5 @@ applications:
   host: ascloud
   disk_quota: 1024M
   services: 
-  - ElephantSQL-Tiny_Turtle
+  - Db2-Lite
   buildpack: java_buildpack
