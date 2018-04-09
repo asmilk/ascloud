@@ -1,5 +1,7 @@
 package asmilk.ascloud.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import asmilk.ascloud.domain.Account;
@@ -8,5 +10,7 @@ import asmilk.ascloud.domain.Account;
 public interface AccountService {
 
 	Account save(Account account);
+
+	List<Account> findAll();
 
 }

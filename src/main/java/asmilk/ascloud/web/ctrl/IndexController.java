@@ -1,5 +1,7 @@
 package asmilk.ascloud.web.ctrl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,14 @@ public class IndexController {
 		LOG.info("accountService: {}", this.accountService);
 		Account account = new Account();
 		account.setName("abc");
-		this.accountService.save(account);
+		account = this.accountService.save(account);
+		LOG.info("account: {}", account);
+		
+		List<Account> accounts = this.accountService.findAll();
+		for(Account item : accounts) {
+			LOG.info("account: {}", item);
+		}
+		
 		return "index";
 	}
 

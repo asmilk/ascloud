@@ -1,5 +1,7 @@
 package asmilk.ascloud.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public Account save(Account account) {
 		return this.accountRepository.save(account);
+	}
+
+	@Override
+	public List<Account> findAll() {
+		return this.accountRepository.findAll();
 	}
 
 }
