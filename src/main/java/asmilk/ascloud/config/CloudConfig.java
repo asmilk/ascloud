@@ -21,7 +21,7 @@ public class CloudConfig extends AbstractCloudConfig {
 	}
 
 	@Bean
-	public RedisConnectionFactory redisFactory() {
+	public RedisConnectionFactory redisConnectionFactory() {
 		PoolConfig poolConfig = new PoolConfig(30, 3000);
 		RedisConnectionFactoryConfig redisConfig = new RedisConnectionFactoryConfig(poolConfig);
 		return connectionFactory().redisConnectionFactory(redisConfig);

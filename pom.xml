@@ -19,7 +19,7 @@
 
 		<version.slf4j>1.7.25</version.slf4j>
 		<version.log4j>2.9.1</version.log4j>
-		
+
 		<version.postgresql>9.4.1212</version.postgresql>
 		<version.derby>10.14.1.0</version.derby>
 
@@ -27,8 +27,9 @@
 		<version.spring.cloud>2.0.1.RELEASE</version.spring.cloud>
 		<version.spring.data.jpa>2.0.6.RELEASE</version.spring.data.jpa>
 		<version.spring.data.redis>2.0.6.RELEASE</version.spring.data.redis>
-		
+
 		<version.hibernate.core>5.2.16.Final</version.hibernate.core>
+		<version.lettuce.core>5.0.3.RELEASE</version.lettuce.core>
 
 		<version.jackson>2.9.5</version.jackson>
 
@@ -116,22 +117,27 @@
 			<artifactId>spring-cloud-cloudfoundry-connector</artifactId>
 			<version>${version.spring.cloud}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${version.spring.data.jpa}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-redis</artifactId>
-		    <version>${version.spring.data.redis}</version>
-		</dependency>
-		
-		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${version.hibernate.core}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>${version.spring.data.redis}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.lettuce</groupId>
+			<artifactId>lettuce-core</artifactId>
+			<version>${version.lettuce.core}</version>
 		</dependency>
 
 		<dependency>
