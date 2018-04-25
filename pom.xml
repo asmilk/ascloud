@@ -30,6 +30,7 @@
 
 		<version.hibernate.core>5.2.16.Final</version.hibernate.core>
 		<version.lettuce.core>5.0.3.RELEASE</version.lettuce.core>
+		<version.apache.commons.pool2.core>2.5.0</version.apache.commons.pool2.core>
 
 		<version.jackson>2.9.5</version.jackson>
 
@@ -138,6 +139,11 @@
 			<groupId>io.lettuce</groupId>
 			<artifactId>lettuce-core</artifactId>
 			<version>${version.lettuce.core}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-pool2</artifactId>
+		    <version>${version.apache.commons.pool2.core}</version>
 		</dependency>
 
 		<dependency>
