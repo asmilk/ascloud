@@ -5,9 +5,9 @@ import org.springframework.cloud.service.common.RelationalServiceInfo;
 
 @ServiceLabel("derby")
 public class DerbyServiceInfo extends RelationalServiceInfo {
-	
+
 	public static final String DERBY_SCHEME = "derby";
-	
+
 	public DerbyServiceInfo(String id, String uriString) {
 		this(id, uriString, null);
 	}
@@ -18,33 +18,25 @@ public class DerbyServiceInfo extends RelationalServiceInfo {
 
 	@Override
 	protected String buildJdbcUrl() {
-		return String.format("%s%s://%s%s/%s%s%s", JDBC_PREFIX, jdbcUrlDatabaseType, getHost(), formatPort(),
-				getPath(), formatUserinfo(), formatQuery());
+		return String.format("%s%s://%s%s/%s%s%s", JDBC_PREFIX, jdbcUrlDatabaseType, getHost(), formatPort(), getPath(),
+				formatUserinfo(), formatQuery());
 	}
-	
+
 	private String formatPort() {
-		if (getPort() != -1) {
-			return String.format(":%d", getPort());
-		}
-		return "";
+		return -1 != getPort() ? String.format(":%d", getPort()) : "";
 	}
-	
+
 	private String formatUserinfo() {
-		if (getUserName() != null && getPassword() != null) {
-			return String.format(";user=%s;password=%s", getUserName(), getPassword());
-		}
-		if (getUserName() != null) {
-			return String.format(";user=%s", getUserName());
-		}
-		return "";
+		String userinfo = null != getUserName() && !"".equals(getUserName()) ? String.format(";user=%s", getUserName())
+				: "";
+		userinfo += !"".equals(userinfo) && null != getPassword() && !"".equals(getPassword())
+				? String.format(";password=%s", getPassword())
+				: "";
+		return userinfo;
 	}
-	
+
 	private String formatQuery() {
-		if (getQuery() != null) {
-			return String.format(";%s", getQuery());
-		}
-		return "";
+		return null != getQuery() ? String.format(";%s", getQuery()) : "";
 	}
 
 }
-
