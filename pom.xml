@@ -26,6 +26,7 @@
 		<version.spring.core>5.0.5.RELEASE</version.spring.core>
 		<version.spring.cloud>2.0.1.RELEASE</version.spring.cloud>
 		<version.spring.data.jpa>2.0.6.RELEASE</version.spring.data.jpa>
+		<version.spring.data.redis>2.0.6.RELEASE</version.spring.data.redis>
 		
 		<version.hibernate.core>5.2.16.Final</version.hibernate.core>
 
@@ -120,6 +121,11 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${version.spring.data.jpa}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-redis</artifactId>
+		    <version>${version.spring.data.redis}</version>
 		</dependency>
 		
 		<dependency>

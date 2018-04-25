@@ -8,4 +8,5 @@ applications:
   disk_quota: 1024M
   services: 
   - ElephantSQL-Tiny_Turtle
+  - Redis_Cloud-Free
   buildpack: java_buildpack

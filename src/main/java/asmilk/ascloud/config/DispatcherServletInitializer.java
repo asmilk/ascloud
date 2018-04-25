@@ -6,7 +6,7 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { RootConfig.class, CloudConfig.class, JpaConfig.class };
+		return new Class<?>[] { RootConfig.class, CloudConfig.class, JpaConfig.class, RedisConfig.class };
 	}
 
 	@Override
