@@ -7,6 +7,7 @@ applications:
   host: ascloud
   disk_quota: 1024M
   services: 
+  - Cloudant_NoSQL_DB-Lite
+  - Redis_Cloud-30MB
   - ElephantSQL-Tiny_Turtle
-  - Redis_Cloud-Free
   buildpack: java_buildpack

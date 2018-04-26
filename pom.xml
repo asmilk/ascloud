@@ -22,6 +22,7 @@
 
 		<version.postgresql>9.4.1212</version.postgresql>
 		<version.derby>10.14.1.0</version.derby>
+		<version.cloudant>2.12.0</version.cloudant>
 
 		<version.spring.core>5.0.5.RELEASE</version.spring.core>
 		<version.spring.cloud>2.0.1.RELEASE</version.spring.cloud>
@@ -95,6 +96,11 @@
 			<artifactId>derbyclient</artifactId>
 			<version>${version.derby}</version>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.cloudant</groupId>
+		    <artifactId>cloudant-client</artifactId>
+		    <version>${version.cloudant}</version>
 		</dependency>
 
 		<dependency>

@@ -27,12 +27,12 @@ public class IndexController {
 		account.setName("abc");
 		account = this.accountService.save(account);
 		LOG.info("account: {}", account);
-		
+
 		List<Account> accounts = this.accountService.findAll();
-		for(Account item : accounts) {
+		for (Account item : accounts) {
 			LOG.info("account: {}", item);
 		}
-		
+
 		return "index";
 	}
 
