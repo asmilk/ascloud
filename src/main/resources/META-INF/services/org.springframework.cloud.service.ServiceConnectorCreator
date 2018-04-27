@@ -1,1 +1,2 @@
 asmilk.ascloud.cloud.service.relational.DerbyDataSourceCreator
+asmilk.ascloud.cloud.service.document.CloudantClientCreator
