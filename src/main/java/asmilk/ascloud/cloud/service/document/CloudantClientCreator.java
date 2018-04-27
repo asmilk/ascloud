@@ -14,23 +14,19 @@ import com.cloudant.client.api.CloudantClient;
 import asmilk.ascloud.cloud.service.common.CloudantServiceInfo;
 
 public class CloudantClientCreator extends AbstractServiceConnectorCreator<CloudantClient, CloudantServiceInfo> {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(CloudantClientCreator.class);
 
 	@Override
 	public CloudantClient create(CloudantServiceInfo serviceInfo, ServiceConnectorConfig serviceConnectorConfig) {
 		CloudantClient cloudantClient = null;
-		String uri = serviceInfo.getUri();
-		LOG.info("uri: {}", uri);
 		try {
-			URL url = new URL(uri);
-			cloudantClient = ClientBuilder.url(url).build();
+			cloudantClient = ClientBuilder.url(new URL(serviceInfo.getUri())).build();
 			String serverVersion = cloudantClient.serverVersion();
 			LOG.info("serverVersion: {}", serverVersion);
 		} catch (MalformedURLException e) {
 			LOG.error(e.getMessage(), e);
 		}
-		LOG.info("cloudantClient: {}", cloudantClient);
 		return cloudantClient;
 	}
 

@@ -3,7 +3,7 @@ package asmilk.ascloud.cloud.service.common;
 import org.springframework.cloud.service.ServiceInfo.ServiceLabel;
 import org.springframework.cloud.service.common.RelationalServiceInfo;
 
-@ServiceLabel("derby")
+@ServiceLabel(DerbyServiceInfo.DERBY_SCHEME)
 public class DerbyServiceInfo extends RelationalServiceInfo {
 
 	public static final String DERBY_SCHEME = "derby";
