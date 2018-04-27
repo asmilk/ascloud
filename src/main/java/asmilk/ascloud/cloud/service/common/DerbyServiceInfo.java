@@ -1,4 +1,4 @@
-package asmilk.ascloud.cloud.service;
+package asmilk.ascloud.cloud.service.common;
 
 import org.springframework.cloud.service.ServiceInfo.ServiceLabel;
 import org.springframework.cloud.service.common.RelationalServiceInfo;

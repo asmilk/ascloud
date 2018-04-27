@@ -1,8 +1,8 @@
-package asmilk.ascloud.cloud.local;
+package asmilk.ascloud.cloud.localconfig;
 
 import org.springframework.cloud.localconfig.LocalConfigServiceInfoCreator;
 
-import asmilk.ascloud.cloud.service.DerbyServiceInfo;
+import asmilk.ascloud.cloud.service.common.DerbyServiceInfo;
 
 public class DerbyServiceInfoCreator extends LocalConfigServiceInfoCreator<DerbyServiceInfo> {
 
