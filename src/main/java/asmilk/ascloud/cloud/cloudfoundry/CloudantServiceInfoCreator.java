@@ -10,7 +10,7 @@ import asmilk.ascloud.cloud.service.common.CloudantServiceInfo;
 public class CloudantServiceInfoCreator extends CloudFoundryServiceInfoCreator<CloudantServiceInfo> {
 
 	public CloudantServiceInfoCreator() {
-		super(new Tags(CloudantServiceInfo.CLOUDANT_SCHEME, "ibm_created", "ibm_dedicated_public"));
+		super(new Tags(CloudantServiceInfo.CLOUDANT_SCHEME));
 	}
 
 	@Override
