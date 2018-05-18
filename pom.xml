@@ -39,8 +39,8 @@
 		<version.junit>4.12</version.junit>
 
 		<version.maven.compiler>3.7.0</version.maven.compiler>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<!-- <maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target> -->
 		<version.maven.war>3.2.1</version.maven.war>
 		<version.maven.surefire>2.21.0</version.maven.surefire>
 		<maven.test.skip>true</maven.test.skip>
