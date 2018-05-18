@@ -16,8 +16,8 @@ public class CloudantClientCreator extends AbstractServiceConnectorCreator<Cloud
 
 	@Override
 	public CloudantClient create(CloudantServiceInfo serviceInfo, ServiceConnectorConfig serviceConnectorConfig) {
-		CloudantClient cloudantClient = ClientBuilder.account(serviceInfo.getHost()).username(serviceInfo.getUserName())
-				.password(serviceInfo.getPassword()).build();
+		CloudantClient cloudantClient = ClientBuilder.account(serviceInfo.getHost().replace(".cloudant.com", ""))
+				.username(serviceInfo.getUserName()).password(serviceInfo.getPassword()).build();
 		String serverVersion = cloudantClient.serverVersion();
 		LOG.info("serverVersion: {}", serverVersion);
 		return cloudantClient;
