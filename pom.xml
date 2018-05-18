@@ -21,16 +21,16 @@
 		<version.log4j>2.9.1</version.log4j>
 
 		<version.postgresql>9.4.1212</version.postgresql>
-		<version.derby>10.14.1.0</version.derby>
+		<version.derby>10.14.2.0</version.derby>
 		<version.cloudant>2.12.0</version.cloudant>
 
-		<version.spring.core>5.0.5.RELEASE</version.spring.core>
-		<version.spring.cloud>2.0.1.RELEASE</version.spring.cloud>
-		<version.spring.data.jpa>2.0.6.RELEASE</version.spring.data.jpa>
-		<version.spring.data.redis>2.0.6.RELEASE</version.spring.data.redis>
+		<version.spring.core>5.0.6.RELEASE</version.spring.core>
+		<version.spring.cloud>2.0.2.RELEASE</version.spring.cloud>
+		<version.spring.data>2.0.7.RELEASE</version.spring.data>
 
-		<version.hibernate.core>5.2.16.Final</version.hibernate.core>
-		<version.lettuce.core>5.0.3.RELEASE</version.lettuce.core>
+		<version.hibernate.core>5.2.17.Final</version.hibernate.core>
+		<version.hibernate.validator>6.0.10.Final</version.hibernate.validator>
+		<version.lettuce.core>5.0.4.RELEASE</version.lettuce.core>
 		<version.apache.commons.pool2.core>2.5.0</version.apache.commons.pool2.core>
 		<version.okhttp.core>3.10.0</version.okhttp.core>
 
@@ -39,9 +39,9 @@
 		<version.junit>4.12</version.junit>
 
 		<version.maven.compiler>3.7.0</version.maven.compiler>
-		<!-- <maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target> -->
-		<version.maven.war>3.2.0</version.maven.war>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<version.maven.war>3.2.1</version.maven.war>
 		<version.maven.surefire>2.21.0</version.maven.surefire>
 		<maven.test.skip>true</maven.test.skip>
 		<skipTests>true</skipTests>
@@ -134,18 +134,23 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>${version.spring.data.jpa}</version>
+			<version>${version.spring.data}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${version.hibernate.core}</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>${version.hibernate.validator}</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
-			<version>${version.spring.data.redis}</version>
+			<version>${version.spring.data}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.lettuce</groupId>

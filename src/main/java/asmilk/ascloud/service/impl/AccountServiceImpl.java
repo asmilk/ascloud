@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import asmilk.ascloud.domain.Account;
 import asmilk.ascloud.service.AccountService;
-import asmilk.ascloud.repository.AccountRepository;
+import asmilk.ascloud.repository.jpa.AccountRepository;
 
 @Service
 public class AccountServiceImpl implements AccountService {

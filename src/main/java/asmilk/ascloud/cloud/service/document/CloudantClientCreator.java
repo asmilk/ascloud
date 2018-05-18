@@ -1,8 +1,5 @@
 package asmilk.ascloud.cloud.service.document;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.service.AbstractServiceConnectorCreator;
@@ -19,14 +16,10 @@ public class CloudantClientCreator extends AbstractServiceConnectorCreator<Cloud
 
 	@Override
 	public CloudantClient create(CloudantServiceInfo serviceInfo, ServiceConnectorConfig serviceConnectorConfig) {
-		CloudantClient cloudantClient = null;
-		try {
-			cloudantClient = ClientBuilder.url(new URL(serviceInfo.getUri())).build();
-			String serverVersion = cloudantClient.serverVersion();
-			LOG.info("serverVersion: {}", serverVersion);
-		} catch (MalformedURLException e) {
-			LOG.error(e.getMessage(), e);
-		}
+		CloudantClient cloudantClient = ClientBuilder.account(serviceInfo.getHost()).username(serviceInfo.getUserName())
+				.password(serviceInfo.getPassword()).build();
+		String serverVersion = cloudantClient.serverVersion();
+		LOG.info("serverVersion: {}", serverVersion);
 		return cloudantClient;
 	}
 

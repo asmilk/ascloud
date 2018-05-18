@@ -15,7 +15,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableJpaRepositories(basePackages = "asmilk.ascloud.repository")
+@EnableJpaRepositories(basePackages = "asmilk.ascloud.repository.jpa")
 @EnableTransactionManagement(proxyTargetClass = false)
 public class JpaConfig {
 
