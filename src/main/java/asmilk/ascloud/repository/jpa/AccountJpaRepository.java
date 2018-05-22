@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import asmilk.ascloud.domain.Account;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, String> {
-	
+public interface AccountJpaRepository extends JpaRepository<Account, Long> {
+
 }

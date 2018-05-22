@@ -9,69 +9,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.gson.annotations.SerializedName;
+import com.cloudant.client.api.model.Document;
 
 @Entity
-@JsonInclude(JsonInclude.Include.ALWAYS)
-public class Account implements Serializable {
+public class Account extends Document implements Serializable {
 
-	private static final long serialVersionUID = 8186933733104007451L;
-
-	@SerializedName("_id")
-	private String docId;
-
-	@SerializedName("_rev")
-	private String docRev;
+	private static final long serialVersionUID = 3329478488819188394L;
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	private Long id;
+	private Long pk;
 
 	@Version
-	private Long rev;
+	private Long version;
 
 	private String name;
 
-	@JsonProperty("_id")
-	public String getDocId() {
-		return docId;
+	public Long getPk() {
+		return pk;
 	}
 
-	@JsonProperty("_rev")
-	public String getDocRev() {
-		return docRev;
+	public void setPk(Long pk) {
+		this.pk = pk;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getVersion() {
+		return version;
 	}
 
-	public Long getRev() {
-		return rev;
+	public void setVersion(Long version) {
+		this.version = version;
 	}
 
 	public String getName() {
 		return name;
-	}
-
-	@JsonProperty("_id")
-	public void setDocId(String docId) {
-		this.docId = docId;
-	}
-
-	@JsonProperty("_rev")
-	public void setDocRev(String docRev) {
-		this.docRev = docRev;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public void setRev(Long rev) {
-		this.rev = rev;
 	}
 
 	public void setName(String name) {
@@ -80,8 +51,8 @@ public class Account implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Account [docId=" + docId + ", docRev=" + docRev + ", id=" + id + ", rev=" + rev + ", name=" + name
-				+ "]";
+		return "Account [pk=" + pk + ", version=" + version + ", name=" + name + "]; _id=" + super.getId() + ", _rev="
+				+ super.getRevision();
 	}
 
 }
