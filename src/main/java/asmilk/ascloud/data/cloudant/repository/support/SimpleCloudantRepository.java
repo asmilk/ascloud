@@ -7,7 +7,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus.Series;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 
 import com.cloudant.client.api.Database;
 import com.cloudant.client.api.model.Document;
@@ -34,20 +36,24 @@ public class SimpleCloudantRepository<T extends Document> implements CloudantRep
 	@Override
 	public T save(T document) {
 		String id = document.getId();
-		this.handleResponse(
+		return this.handleResponse(
 				(null != id && !id.trim().equals("")) ? this.database.update(document) : this.database.save(document),
 				document);
-		return document;
 	}
 
 	@Override
 	public List<T> bulk(List<T> documents) {
 		Iterator<Response> responses = this.database.bulk(documents).iterator();
-		documents.forEach(document -> {
+		// documents.forEach(document -> {
+		// if (responses.hasNext()) {
+		// this.handleResponse(responses.next(), document);
+		// }
+		// });
+		for (T document : documents) {
 			if (responses.hasNext()) {
 				this.handleResponse(responses.next(), document);
 			}
-		});
+		}
 		return documents;
 	}
 
@@ -88,11 +94,10 @@ public class SimpleCloudantRepository<T extends Document> implements CloudantRep
 
 	@Override
 	public T remove(T document) {
-		this.handleResponse(this.database.remove(document), document);
-		return document;
+		return this.handleResponse(this.database.remove(document), document);
 	}
 
-	private void handleResponse(Response response, T document) {
+	private T handleResponse(Response response, T document) {
 		HttpStatus statusCode = HttpStatus.resolve(response.getStatusCode());
 		LOG.info("{}:{}-{}", statusCode, response.getReason(), response.getError());
 		switch (statusCode) {
@@ -102,8 +107,16 @@ public class SimpleCloudantRepository<T extends Document> implements CloudantRep
 			document.setRevision(response.getRev());
 			break;
 		default:
-			throw new HttpClientErrorException(statusCode, response.getError());
+			Series series = statusCode.series();
+			switch (series) {
+			case CLIENT_ERROR:
+				throw new HttpClientErrorException(statusCode, response.getError());
+			case SERVER_ERROR:
+				throw new HttpServerErrorException(statusCode, response.getError());
+			default:
+			}
 		}
+		return document;
 	}
 
 }
