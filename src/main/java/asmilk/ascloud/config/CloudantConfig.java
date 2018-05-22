@@ -25,7 +25,7 @@ public class CloudantConfig {
 
 	@Bean
 	public AccountCloudantRepository accountCloudantRepository(Database database) {
-		SimpleCloudantRepository<Account> simpleCloudantRepository = new SimpleCloudantRepository<Account>(database,
+		final SimpleCloudantRepository<Account> simpleCloudantRepository = new SimpleCloudantRepository<Account>(database,
 				Account.class);
 		return (AccountCloudantRepository) Proxy.newProxyInstance(this.getClass().getClassLoader(),
 				new Class<?>[] { AccountCloudantRepository.class }, new InvocationHandler() {
