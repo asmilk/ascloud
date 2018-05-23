@@ -48,6 +48,15 @@ public class IndexController {
 
 		account = this.accountCloudantRepository.find(account.getId());
 		LOG.info("account5:{}", account);
+		
+		account = this.accountCloudantRepository.find(account.getId());
+		LOG.info("account5:{}", account);
+		
+		account = this.accountCloudantRepository.find(account.getId());
+		LOG.info("account5:{}", account);
+		
+		account = this.accountCloudantRepository.find(account.getId());
+		LOG.info("account5:{}", account);
 
 		account.setName("cloudant3");
 		LOG.info("account6:{}", account);

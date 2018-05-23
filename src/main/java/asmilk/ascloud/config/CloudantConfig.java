@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -16,6 +17,7 @@ import asmilk.ascloud.repository.cloudant.AccountCloudantRepository;
 
 //@Profile("cloud")
 @ComponentScan("asmilk.ascloud.repository.cloudant")
+@EnableCaching
 public class CloudantConfig {
 
 	@Bean
@@ -25,8 +27,8 @@ public class CloudantConfig {
 
 	@Bean
 	public AccountCloudantRepository accountCloudantRepository(Database database) {
-		final SimpleCloudantRepository<Account> simpleCloudantRepository = new SimpleCloudantRepository<Account>(database,
-				Account.class);
+		final SimpleCloudantRepository<Account> simpleCloudantRepository = new SimpleCloudantRepository<Account>(
+				database, Account.class);
 		return (AccountCloudantRepository) Proxy.newProxyInstance(this.getClass().getClassLoader(),
 				new Class<?>[] { AccountCloudantRepository.class }, new InvocationHandler() {
 

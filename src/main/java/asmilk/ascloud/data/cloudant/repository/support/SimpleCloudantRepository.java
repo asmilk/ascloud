@@ -6,6 +6,10 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatus.Series;
 import org.springframework.web.client.HttpClientErrorException;
@@ -19,6 +23,7 @@ import com.cloudant.client.api.query.QueryResult;
 
 import asmilk.ascloud.data.cloudant.repository.CloudantRepository;
 
+@CacheConfig(cacheNames = "documents")
 public class SimpleCloudantRepository<T extends Document> implements CloudantRepository<T> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SimpleCloudantRepository.class);
@@ -34,6 +39,7 @@ public class SimpleCloudantRepository<T extends Document> implements CloudantRep
 	}
 
 	@Override
+	@CachePut(cacheNames = "documents", key = "#document.id")
 	public T save(T document) {
 		String id = document.getId();
 		return this.handleResponse(
@@ -63,6 +69,7 @@ public class SimpleCloudantRepository<T extends Document> implements CloudantRep
 	}
 
 	@Override
+	@Cacheable(cacheNames = "documents", key = "#id")
 	public T find(String id) {
 		return this.database.find(classT, id);
 	}
@@ -93,6 +100,7 @@ public class SimpleCloudantRepository<T extends Document> implements CloudantRep
 	}
 
 	@Override
+	@CacheEvict(cacheNames = "documents", key = "#document.id")
 	public T remove(T document) {
 		return this.handleResponse(this.database.remove(document), document);
 	}
