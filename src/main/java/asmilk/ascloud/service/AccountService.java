@@ -10,6 +10,10 @@ import asmilk.ascloud.domain.Account;
 public interface AccountService {
 
 	Account save(Account account);
+	
+	Account find(String id);
+	
+	Account remove(Account account);
 
 	List<Account> findAll();
 
