@@ -3,6 +3,8 @@ package asmilk.ascloud.web.ctrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.Cache;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,13 +21,22 @@ public class AccountController {
 
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private Cache cache;
 
 	@GetMapping("/save")
 	public String save() {
 		Account account = new Account();
 		account.setName("account_" + System.currentTimeMillis());
 		account = this.accountService.save(account);
-		LOG.info("account:{}", account);
+		LOG.info("account1:{}", account);
+		
+		
+		LOG.info("cache.name:{}", this.cache.getName());
+		
+		account = this.cache.get(account.getId(), Account.class);
+		LOG.info("account2:{}", account);
 		return "index";
 	}
 
@@ -33,10 +44,14 @@ public class AccountController {
 	public String update(@PathVariable("id") String id) {
 		LOG.info("id:{}", id);
 		Account account = this.accountService.find(id);
-		LOG.info("account:{}", account);
+		LOG.info("account3:{}", account);
 		account.setName("account_" + System.currentTimeMillis());
 		account = this.accountService.save(account);
-		LOG.info("account:{}", account);
+		LOG.info("account4:{}", account);
+		
+		LOG.info("cache.name:{}", this.cache.getName());
+		account = this.cache.get(account.getId(), Account.class);
+		LOG.info("account5:{}", account);
 		return "index";
 	}
 
@@ -44,7 +59,7 @@ public class AccountController {
 	public String find(@PathVariable("id") String id) {
 		LOG.info("id:{}", id);
 		Account account = this.accountService.find(id);
-		LOG.info("account:{}", account);
+		LOG.info("account6:{}", account);
 		return "index";
 	}
 

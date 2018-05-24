@@ -49,13 +49,13 @@ public class CloudantConfig {
 				});
 	}
 
-	@Bean
-	@Profile("default")
-	public ConcurrentMapCacheFactoryBean documentsCacheFactoryBean() {
-		ConcurrentMapCacheFactoryBean documentsCacheFactoryBean = new ConcurrentMapCacheFactoryBean();
-		documentsCacheFactoryBean.setName("documents");
-		return documentsCacheFactoryBean;
-	}
+//	@Bean
+//	@Profile("default")
+//	public ConcurrentMapCacheFactoryBean documentsCacheFactoryBean() {
+//		ConcurrentMapCacheFactoryBean documentsCacheFactoryBean = new ConcurrentMapCacheFactoryBean();
+//		documentsCacheFactoryBean.setName("documents");
+//		return documentsCacheFactoryBean;
+//	}
 
 	@Bean
 	@Profile("default")
