@@ -1,5 +1,8 @@
 package asmilk.ascloud.config;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.cache.RedisCacheManager;
@@ -18,7 +21,9 @@ public class RedisConfig {
 
 	@Bean
 	public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
-		return RedisCacheManager.create(connectionFactory);
+		Set<String> cacheNames = new HashSet<String>();
+		cacheNames.add("accounts");
+		return RedisCacheManager.builder(connectionFactory).initialCacheNames(cacheNames).build();
 	}
 
 }
