@@ -51,8 +51,8 @@ public class Account extends Document implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Account [pk=" + pk + ", version=" + version + ", name=" + name + "]; _id=" + super.getId() + ", _rev="
-				+ super.getRevision();
+		return "Account [pk=" + pk + ", version=" + version + ", name=" + name + "]; _id=" + this.getId() + ", _rev="
+				+ this.getRevision();
 	}
 
 }

@@ -15,6 +15,8 @@ import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 
 import com.cloudant.client.api.CloudantClient;
 import com.cloudant.client.api.Database;
@@ -49,14 +51,6 @@ public class CloudantConfig {
 				});
 	}
 
-//	@Bean
-//	@Profile("default")
-//	public ConcurrentMapCacheFactoryBean documentsCacheFactoryBean() {
-//		ConcurrentMapCacheFactoryBean documentsCacheFactoryBean = new ConcurrentMapCacheFactoryBean();
-//		documentsCacheFactoryBean.setName("documents");
-//		return documentsCacheFactoryBean;
-//	}
-
 	@Bean
 	@Profile("default")
 	public ConcurrentMapCacheFactoryBean accountsCacheFactoryBean() {
@@ -74,6 +68,12 @@ public class CloudantConfig {
 		SimpleCacheManager cacheManager = new SimpleCacheManager();
 		cacheManager.setCaches(Arrays.asList(caches));
 		return cacheManager;
+	}
+
+	@Bean
+	@Profile("cloud")
+	public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
+		return RedisCacheManager.create(connectionFactory);
 	}
 
 }

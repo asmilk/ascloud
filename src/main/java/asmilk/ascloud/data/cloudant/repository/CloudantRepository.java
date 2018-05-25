@@ -24,7 +24,7 @@ public interface CloudantRepository<T extends Document> {
 	@Cacheable
 	boolean contains(String id);
 
-	@Cacheable
+	@Cacheable(unless = "#result.id == null")
 	T find(String id);
 
 	@Cacheable

@@ -2,8 +2,6 @@ package asmilk.ascloud.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
-import org.springframework.data.redis.cache.RedisCacheConfiguration;
-import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -15,12 +13,6 @@ public class RedisConfig {
 		RedisTemplate<String, String> redisTemplate = new RedisTemplate<String, String>();
 		redisTemplate.setConnectionFactory(connectionFactory);
 		return redisTemplate;
-	}
-
-	@Bean
-	public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
-		return RedisCacheManager.builder(connectionFactory)
-				.cacheDefaults(RedisCacheConfiguration.defaultCacheConfig().disableCachingNullValues()).build();
 	}
 
 }
