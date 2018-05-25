@@ -48,7 +48,7 @@ public class AccountController {
 
 		// LOG.info("cache.name:{}", this.cache.getName());
 		// account = this.cache.get(account.getId(), Account.class);
-		LOG.info("account5:{}", account);
+		// LOG.info("account5:{}", account);
 		return "index";
 	}
 
