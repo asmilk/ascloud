@@ -5,14 +5,18 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Book implements Serializable {
 
 	private static final long serialVersionUID = 158223506149006607L;
 	
 	@Id
+	@SerializedName("_id")
 	private String id;
 	
 	@Version
+	@SerializedName("_rev")
 	private String rev;
 	
 	private String name;

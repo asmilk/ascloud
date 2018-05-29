@@ -1,10 +1,12 @@
 package asmilk.ascloud.repository.cloudant.impl;
 
-import java.util.UUID;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.cloudant.client.api.Database;
+import com.cloudant.client.api.model.Response;
 
 import asmilk.ascloud.domain.Book;
 import asmilk.ascloud.repository.cloudant.BookCloudantRepository;
@@ -14,21 +16,21 @@ public class BookCloudantRepositoryImpl implements BookCloudantRepository {
 
 	private static final Logger LOG = LoggerFactory.getLogger(BookCloudantRepositoryImpl.class);
 
-	private Book instance;
+	@Autowired
+	private Database database;
 
 	@Override
 	public Book save(Book document) {
-		LOG.info("book:{}", document);
-		document.setId(UUID.randomUUID().toString());
-		document.setRev("1");
-		this.instance = document;
-		return this.instance;
+		Response response = this.database.save(document);
+		document.setId(response.getId());
+		document.setRev(response.getRev());
+		return document;
 	}
 
 	@Override
 	public Book find(String id) {
 		LOG.info("!!!BookCloudantRepositoryImpl.find()!!!");
-		return this.instance;
+		return this.database.find(Book.class, id);
 	}
 
 }

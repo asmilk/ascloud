@@ -24,15 +24,16 @@ public class BookController {
 	public String save() {
 		Book book = new Book();
 		book.setName("book_" + System.currentTimeMillis());
+		LOG.info("book1:{}", book);
 		book = this.bookService.save(book);
-		LOG.info("book:{}", book);
+		LOG.info("book2:{}", book);
 		return "index";
 	}
 
 	@GetMapping("/{id}")
 	public String find(@PathVariable("id") String id) {
 		Book book = this.bookService.find(id);
-		LOG.info("book:{}", book);
+		LOG.info("book3:{}", book);
 		return "index";
 	}
 
