@@ -50,6 +50,14 @@ public class CloudantConfig {
 
 				});
 	}
+	
+	@Bean
+	@Profile("default")
+	public ConcurrentMapCacheFactoryBean booksCacheFactoryBean() {
+		ConcurrentMapCacheFactoryBean booksCacheFactoryBean = new ConcurrentMapCacheFactoryBean();
+		booksCacheFactoryBean.setName("books");
+		return booksCacheFactoryBean;
+	}
 
 	@Bean
 	@Profile("default")
