@@ -10,10 +10,10 @@ import asmilk.ascloud.domain.Book;
 @Repository
 @CacheConfig(cacheNames = "books")
 public interface BookCloudantRepository {
-	
-	@CachePut
+
+	@CachePut(key = "#result.id")
 	Book save(Book document);
-	
+
 	@Cacheable
 	Book find(String id);
 

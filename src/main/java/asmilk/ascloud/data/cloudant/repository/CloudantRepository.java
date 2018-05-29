@@ -15,7 +15,7 @@ import com.cloudant.client.api.query.QueryResult;
 @NoRepositoryBean
 public interface CloudantRepository<T extends Document> {
 
-	@CachePut
+	@CachePut(key = "#result.id")
 	T save(T document);
 
 	@CachePut

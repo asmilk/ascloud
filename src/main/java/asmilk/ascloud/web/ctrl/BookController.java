@@ -14,7 +14,7 @@ import asmilk.ascloud.service.BookService;
 @Controller
 @RequestMapping("/book")
 public class BookController {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(BookController.class);
 
 	@Autowired
