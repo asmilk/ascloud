@@ -2,35 +2,13 @@ package asmilk.ascloud.domain;
 
 import java.io.Serializable;
 
-import com.google.gson.annotations.SerializedName;
+import com.cloudant.client.api.model.Document;
 
-public class Book implements Serializable {
+public class Book extends Document implements Serializable {
 
 	private static final long serialVersionUID = 158223506149006607L;
 
-	@SerializedName("_id")
-	private String id;
-
-	@SerializedName("_rev")
-	private String rev;
-
 	private String name;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getRev() {
-		return rev;
-	}
-
-	public void setRev(String rev) {
-		this.rev = rev;
-	}
 
 	public String getName() {
 		return name;
@@ -42,7 +20,7 @@ public class Book implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", rev=" + rev + ", name=" + name + "]";
+		return "{_id=" + getId() + ", _rev=" + getRevision() + "}; @Book [name=" + name;
 	}
 
 }

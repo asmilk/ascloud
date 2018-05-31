@@ -23,7 +23,7 @@ public class BookCloudantRepositoryImpl implements BookCloudantRepository {
 	public Book save(Book document) {
 		Response response = this.database.save(document);
 		document.setId(response.getId());
-		document.setRev(response.getRev());
+		document.setRevision(response.getRev());
 		return document;
 	}
 
@@ -43,7 +43,7 @@ public class BookCloudantRepositoryImpl implements BookCloudantRepository {
 	public Book remove(Book document) {
 		Response response = this.database.remove(document);
 		document.setId(response.getId());
-		document.setRev(response.getRev());
+		document.setRevision(response.getRev());
 		return document;
 	}
 
