@@ -23,4 +23,14 @@ public class BookServiceImpl implements BookService {
 		return this.bookCloudantRepository.find(id);
 	}
 
+	@Override
+	public Book find(String id, String rev) {
+		return this.bookCloudantRepository.find(id, rev);
+	}
+
+	@Override
+	public Book remove(Book document) {
+		return this.bookCloudantRepository.remove(document);
+	}
+
 }

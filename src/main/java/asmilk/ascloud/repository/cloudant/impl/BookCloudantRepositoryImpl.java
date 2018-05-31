@@ -29,8 +29,22 @@ public class BookCloudantRepositoryImpl implements BookCloudantRepository {
 
 	@Override
 	public Book find(String id) {
-		LOG.info("!!!BookCloudantRepositoryImpl.find()!!!");
+		LOG.info("!!!BookCloudantRepositoryImpl.find(id)!!!");
 		return this.database.find(Book.class, id);
+	}
+
+	@Override
+	public Book find(String id, String rev) {
+		LOG.info("!!!BookCloudantRepositoryImpl.find(id, rev)!!!");
+		return this.database.find(Book.class, id, rev);
+	}
+
+	@Override
+	public Book remove(Book document) {
+		Response response = this.database.remove(document);
+		document.setId(response.getId());
+		document.setRev(response.getRev());
+		return document;
 	}
 
 }

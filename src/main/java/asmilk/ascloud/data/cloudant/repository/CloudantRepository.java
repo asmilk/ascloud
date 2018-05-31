@@ -24,7 +24,7 @@ public interface CloudantRepository<T extends Document> {
 	@Cacheable
 	boolean contains(String id);
 
-	@Cacheable(unless = "#result.id == null")
+	@Cacheable
 	T find(String id);
 
 	@Cacheable
@@ -42,7 +42,7 @@ public interface CloudantRepository<T extends Document> {
 	@Cacheable
 	QueryResult<T> query(String query);
 
-	@CacheEvict
+	@CacheEvict(key = "#result.id")
 	T remove(T document);
 
 }

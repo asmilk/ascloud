@@ -1,6 +1,7 @@
 package asmilk.ascloud.repository.cloudant;
 
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
@@ -16,5 +17,11 @@ public interface BookCloudantRepository {
 
 	@Cacheable
 	Book find(String id);
+
+	@Cacheable
+	Book find(String id, String rev);
+
+	@CacheEvict(key = "#result.id")
+	Book remove(Book document);
 
 }

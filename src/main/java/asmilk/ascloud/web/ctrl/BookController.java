@@ -37,4 +37,20 @@ public class BookController {
 		return "index";
 	}
 
+	@GetMapping("/{id}/{rev}")
+	public String find(@PathVariable("id") String id, @PathVariable("rev") String rev) {
+		Book book = this.bookService.find(id, rev);
+		LOG.info("book4:{}", book);
+		return "index";
+	}
+
+	@GetMapping("/remove/{id}")
+	public String remove(@PathVariable("id") String id) {
+		Book book = this.bookService.find(id);
+		LOG.info("book5:{}", book);
+		book = this.bookService.remove(book);
+		LOG.info("book6:{}", book);
+		return "index";
+	}
+
 }
