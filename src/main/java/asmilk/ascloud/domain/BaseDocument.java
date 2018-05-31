@@ -1,9 +1,12 @@
 package asmilk.ascloud.domain;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class BaseDocument {
-
+public class BaseDocument implements Serializable {
+	
+	private static final long serialVersionUID = -2599154277286186856L;
 	@SerializedName("_id")
 	public String id;
 	@SerializedName("_rev")

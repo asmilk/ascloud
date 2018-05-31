@@ -21,7 +21,7 @@ public interface BookCloudantRepository {
 	@Cacheable
 	Book find(String id, String rev);
 
-	@CacheEvict(key = "#result.id")
+	@CacheEvict(key = "#result.getId()")
 	Book remove(Book document);
 
 }
