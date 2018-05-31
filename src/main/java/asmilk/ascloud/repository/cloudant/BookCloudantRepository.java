@@ -12,7 +12,7 @@ import asmilk.ascloud.domain.Book;
 @CacheConfig(cacheNames = "books")
 public interface BookCloudantRepository {
 
-	@CachePut(key = "#result.getId()")
+	@CachePut(key = "#result.id")
 	Book save(Book document);
 
 	@Cacheable
@@ -21,7 +21,7 @@ public interface BookCloudantRepository {
 	@Cacheable
 	Book find(String id, String rev);
 
-	@CacheEvict(key = "#result.getId()")
+	@CacheEvict(key = "#result.id")
 	Book remove(Book document);
 
 }

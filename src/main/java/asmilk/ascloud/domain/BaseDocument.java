@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 public class BaseDocument {
 
 	@SerializedName("_id")
-	private String id;
+	public String id;
 	@SerializedName("_rev")
-	private String revision;
+	public String revision;
 
 	public String getId() {
 		return id;
