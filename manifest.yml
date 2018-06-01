@@ -10,4 +10,5 @@ applications:
   - Cloudant_NoSQL_DB-Lite
   - Redis_Cloud-30MB
   - ElephantSQL-Tiny_Turtle
+  - CloudAMQP-Little_Lemur
   buildpack: java_buildpack

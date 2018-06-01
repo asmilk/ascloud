@@ -2,6 +2,7 @@ package asmilk.ascloud.web.ctrl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+
 	@GetMapping("/save")
 	public String save() {
 		Book book = new Book();
@@ -27,6 +31,8 @@ public class BookController {
 		LOG.info("book1:{}", book);
 		book = this.bookService.save(book);
 		LOG.info("book2:{}", book);
+		
+		this.rabbitTemplate.convertAndSend("myqueue", book);
 		return "index";
 	}
 
@@ -50,6 +56,13 @@ public class BookController {
 		LOG.info("book5:{}", book);
 		book = this.bookService.remove(book);
 		LOG.info("book6:{}", book);
+		return "index";
+	}
+	
+	@GetMapping("/receive")
+	public String receive() {
+		Book book = (Book) this.rabbitTemplate.receiveAndConvert("myqueue");
+		LOG.info("book7:{}", book);
 		return "index";
 	}
 

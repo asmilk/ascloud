@@ -27,6 +27,7 @@
 		<version.spring.core>5.0.6.RELEASE</version.spring.core>
 		<version.spring.cloud>2.0.2.RELEASE</version.spring.cloud>
 		<version.spring.data>2.0.7.RELEASE</version.spring.data>
+		<version.spring.rabbit>2.0.3.RELEASE</version.spring.rabbit>
 
 		<version.hibernate.core>5.2.17.Final</version.hibernate.core>
 		<version.hibernate.validator>6.0.10.Final</version.hibernate.validator>
@@ -161,6 +162,12 @@
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-pool2</artifactId>
 		    <version>${version.apache.commons.pool2.core}</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.springframework.amqp</groupId>
+		  <artifactId>spring-rabbit</artifactId>
+		  <version>${version.spring.rabbit}</version>
 		</dependency>
 
 		<dependency>
