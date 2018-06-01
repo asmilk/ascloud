@@ -12,11 +12,11 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
 import com.cloudant.client.api.Database;
-import com.cloudant.client.api.model.Document;
 import com.cloudant.client.api.model.Params;
 import com.cloudant.client.api.model.Response;
 import com.cloudant.client.api.query.QueryResult;
 
+import asmilk.ascloud.data.cloudant.model.Document;
 import asmilk.ascloud.data.cloudant.repository.CloudantRepository;
 
 public class SimpleCloudantRepository<T extends Document> implements CloudantRepository<T> {
@@ -63,7 +63,6 @@ public class SimpleCloudantRepository<T extends Document> implements CloudantRep
 
 	@Override
 	public T find(String id) {
-		LOG.info("!!!SimpleCloudantRepository.find(String id)!!!");
 		return this.database.find(classT, id);
 	}
 

@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 @EnableWebMvc
 @ComponentScan("asmilk.ascloud.web")
 public class ServletConfig implements WebMvcConfigurer {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(ServletConfig.class);
 
 	@Autowired

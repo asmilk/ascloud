@@ -2,6 +2,8 @@ package asmilk.ascloud.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import asmilk.ascloud.service.AccountService;
 @Service
 public class AccountServiceImpl implements AccountService {
 
+	private static final Logger LOG = LoggerFactory.getLogger(AccountServiceImpl.class);
+
 	@Autowired
 	private AccountJpaRepository accountJpaRepository;
 
@@ -21,7 +25,12 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account save(Account account) {
-		return this.accountCloudantRepository.save(account);
+		LOG.info("account1: {}", account);
+		account = this.accountCloudantRepository.save(account);
+		LOG.info("account2: {}", account);
+		account = this.accountJpaRepository.save(account);
+		LOG.info("account3: {}", account);
+		return account;
 	}
 
 	@Override

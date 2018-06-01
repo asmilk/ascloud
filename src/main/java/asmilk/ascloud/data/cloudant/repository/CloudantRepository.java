@@ -8,9 +8,10 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import com.cloudant.client.api.model.Document;
 import com.cloudant.client.api.model.Params;
 import com.cloudant.client.api.query.QueryResult;
+
+import asmilk.ascloud.data.cloudant.model.Document;
 
 @NoRepositoryBean
 public interface CloudantRepository<T extends Document> {
@@ -42,7 +43,7 @@ public interface CloudantRepository<T extends Document> {
 	@Cacheable
 	QueryResult<T> query(String query);
 
-	@CacheEvict(key = "#result.id")
+	@CacheEvict(key = "#result.id", allEntries = true)
 	T remove(T document);
 
 }

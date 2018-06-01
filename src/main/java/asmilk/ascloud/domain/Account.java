@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
-import com.cloudant.client.api.model.Document;
+import asmilk.ascloud.data.cloudant.model.Document;
 
 @Entity
 public class Account extends Document implements Serializable {
@@ -51,8 +51,8 @@ public class Account extends Document implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Account [pk=" + pk + ", version=" + version + ", name=" + name + "]; _id=" + this.getId() + ", _rev="
-				+ this.getRevision();
+		return "{_id=" + getId() + ", _rev=" + getRevision() + "}; @" + this.getClass().getName() + " [pk=" + pk
+				+ ", version=" + version + ", name=" + name + "]";
 	}
 
 }

@@ -23,7 +23,9 @@ import com.cloudant.client.api.Database;
 
 import asmilk.ascloud.data.cloudant.repository.support.SimpleCloudantRepository;
 import asmilk.ascloud.domain.Account;
+import asmilk.ascloud.domain.Book;
 import asmilk.ascloud.repository.cloudant.AccountCloudantRepository;
+import asmilk.ascloud.repository.cloudant.BookCloudantRepository;
 
 @EnableCaching
 @ComponentScan("asmilk.ascloud.repository.cloudant")
@@ -45,12 +47,29 @@ public class CloudantConfig {
 
 					@Override
 					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+						LOG.info(method.toGenericString());
 						return method.invoke(simpleCloudantRepository, args);
 					}
 
 				});
 	}
 	
+	@Bean
+	public BookCloudantRepository bookCloudantRepository(Database database) {
+		final SimpleCloudantRepository<Book> simpleCloudantRepository = new SimpleCloudantRepository<Book>(
+				database, Book.class);
+		return (BookCloudantRepository) Proxy.newProxyInstance(this.getClass().getClassLoader(),
+				new Class<?>[] { BookCloudantRepository.class }, new InvocationHandler() {
+
+					@Override
+					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+						LOG.info(method.toGenericString());
+						return method.invoke(simpleCloudantRepository, args);
+					}
+
+				});
+	}
+
 	@Bean
 	@Profile("default")
 	public ConcurrentMapCacheFactoryBean booksCacheFactoryBean() {
