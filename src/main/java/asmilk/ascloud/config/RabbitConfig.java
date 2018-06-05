@@ -7,13 +7,23 @@ import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.retry.backoff.ExponentialBackOffPolicy;
+import org.springframework.retry.support.RetryTemplate;
 
 @Profile("cloud")
 public class RabbitConfig {
 
 	@Bean
 	public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-		return new RabbitTemplate(connectionFactory);
+		RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+		RetryTemplate retryTemplate = new RetryTemplate();
+		ExponentialBackOffPolicy backOffPolicy = new ExponentialBackOffPolicy();
+		backOffPolicy.setInitialInterval(500);
+		backOffPolicy.setMultiplier(10.0);
+		backOffPolicy.setMaxInterval(10000);
+		retryTemplate.setBackOffPolicy(backOffPolicy);
+		rabbitTemplate.setRetryTemplate(retryTemplate);
+		return rabbitTemplate;
 	}
 
 	@Bean
